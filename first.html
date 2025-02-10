@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flixify by Raghav</title>
+    <link rel="stylesheet" href="second.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+</head>
+<body>
+
+    <h1 id="title">Your Ultimate Movie Destination</h1>
+    <header id="jai">
+        <a id="yy" href="#">HOME</a>
+        <a id="yy"href="#">MOVIES</a>
+        <a id="yy" href="#">PLAYLIST</a>
+        <a id="yy" href="#">ABOUT</a>
+        <input placeholder="search for movie">
+        <button>search</button>
+    </header>
+    <div id="two"><b>Movies</b></div>
+    <div id="one">
+        Movies move us like nothing else can, whether<br> they scary, funny, dramatic, romantic or anywhere in-between.<br>So many titles, so much to experience.</div>
+    <div id="container">
+        <a href="https://vegamoviese.my/squid-game-2024-s02-multi-audio-hindi-english-korean-netflix-original-web-dl-480p-720p-1080p/"><img src="1.jpg"></a>
+        <a href="https://vegamoviese.my/pushpa-the-rule-part-2-2024-dual-audio-hindi-org-telugu-full-movie-480p-720p-1080p-hq-camrip/"><img src="2.jpg"></a>
+        <a href="https://www.netflix.com/in/title/81686134"><img src="3.jpeg"></a>
+       <a href="https://www.primevideo.com/detail/Yeh-Jawaani-Hai-Deewani/0NU7MBRU958PX2QUTM0F3GG5TP"> <img src="4.jpg"></a>
+        <a href="https://www.primevideo.com/detail/Tiger-3/0N919Y58PK8T36JQFH6NNU2YLR"><img src="5.jpg"></a>
+    </div>
+    <div id="con">
+        <a href="https://primevideo.com/detail/Sholay/0PM8FNVBBT8L7UZ5D28D0V2FF7"><img src="6.jpg"></a>
+        <a href="https://www.rottentomatoes.com/m/deadpool"><img src="7.jpg"></a>
+        <a href="https://www.rottentomatoes.com/m/dhoom_3"><img src="8.jpg"></a>
+        <a href="https://www.youtube.com/watch?v=-rMvyYMnK3c"><img src="9.jpg"></a>
+        <a href="https://www.hotstar.com/in/movies/iron-man-2/1660000039"><img src="10.jpg"></a>
+        <br>
+    </div>
+    <form id="movieForm">
+        <label for="movieName">Movie Name:</label>
+        <input type="text" id="movieName" name="movieName" required><br><br>
+      
+        <label for="director">Director:</label>
+        <input type="text" id="director" name="director"><br><br>
+      
+        <label for="year">Release Year:</label>
+        <input type="number" id="year" name="year" required><br><br>
+      
+        <button type="button" onclick="saveToExcel()">Submit</button>
+      </form>
+      <script>
+        let movieData = []; 
+      
+        function saveToExcel() {
+          const movieName = document.getElementById('movieName').value;
+          const director = document.getElementById('director').value;
+          const year = document.getElementById('year').value;
+    
+          movieData.push({
+            "Movie Name": movieName,
+            "Director": director,
+            "Release Year": year,
+          });
+          const workbook = XLSX.utils.book_new();
+          const worksheet = XLSX.utils.json_to_sheet(movieData);
+    
+          XLSX.utils.book_append_sheet(workbook, worksheet, 'Movies');
+          XLSX.writeFile(workbook, 'movies.xlsx');
+      
+          alert('Data saved to Excel file!');
+        }
+      </script>
+       
+      
+      
+    
+</body>
+</html>
